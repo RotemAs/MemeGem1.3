@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memes Generator</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body onload="onInit()">
+    <header>
+      <div class="logo"><img src="img/logo.png" alt="MEMEGEN LOGO"></div>
+      <div class="header-buttons">
+        <button class="btn-burger" onclick="onOpenNav()">&#9776;</button>
+        <div class="nav">
+          <ul>
+            <li>
+              <button
+                class="btn-gallery"
+                onclick="onBackToGallery(), onCloseNav()"
+              >
+                Gallery
+              </button>
+            </li>
+            <li>
+              <button class="btn-memes" onclick="onBackToMemes(), onCloseNav()">
+                Memes
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="meme-editor">
+        <canvas class="my-canvas" width="300px" height="300px"></canvas>
+        <div class="line-controls">
+          <div class="upper-container">
+            <input
+              oninput="onUpdateText(this.value)"
+              class="insert-text search"
+              type="text"
+              placeholder="Enter text"
+            />
+            <div class="below-sec">
+              <button title="Replacing control text boxes" onclick="onSwitchLine()" >
+                <i class="fas fa-arrows-alt-v"></i>
+              </button>
+              <button onclick="onAddLine()">
+                <i class="fas fa-plus"></i>
+              </button>
+              <button onclick="onRemoveLine()">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+            <div class="icons-gallery">
+              <button class="btn-left-arrow" onclick="onNextStickerPage(-1)">
+                <i class="fas fa-angle-left"></i>
+              </button>
+              <ul class="stickers"></ul>
+              <button class="btn-right-arrow" onclick="onNextStickerPage(1)">
+                <i class="fas fa-angle-right"></i>
+              </button>
+            </div>
+          </div>
+         
+          <div class="middle-container">
+            <div class="middle-upper">
+              <button onclick="onIncreaseSize(1)">
+                <i class="fas fa-search-plus"></i>
+              </button>
+              <button onclick="onDecreaseSize(-1)">
+                <i class="fas fa-search-minus"></i>
+              </button>
+              <button onclick="onAlignLeft()">
+                <i class="fas fa-align-left"></i>
+              </button>
+              <button onclick="onAlignCenter()">
+                <i class="fas fa-align-center"></i>
+              </button>
+              <button onclick="onAlignRight()">
+                <i class="fas fa-align-right"></i>
+              </button>
+            </div>
+            <div class="middle-below">
+              <select name="font" id="font" onchange="onFont(this.value)">
+                <option value="impact">IMPACT</option>
+                <option value="arial">ARIAL</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial</option>
+              </select>
+              <input
+                class="color-picker"
+                type="color"
+                onchange="onPickColor(this.value)"
+              />
+              <label for="stroke">s</label>
+              <input
+                type="color"
+                id="stroke"
+                onchange="onPickStrokeColor(this.value)"
+              />
+            </div>
+          </div>
+
+          <!-- <button onclick="onMoveUp(-1)">Up</button>
+          <button onclick="onMoveDown(1)">Down</button> -->
+
+          <div class="save-sec">
+            <a
+              href="#"
+              class="download"
+              onclick="downloadCanvas(this)"
+              download=""
+              >Download</a
+            >
+            <button class="btn-share" onclick="onShareCanvas()">Share</button>
+            <button class="btn-save" onclick="onSave()">Save</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="search-sec">
+        <div class="import-file">
+          <input
+            type="file"
+            class="file-input"
+            name="image"
+            onchange="onImgInput(event)"
+          />
+        </div>
+        <div class="wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input
+            placeholder="Search"
+            type="text"
+            class="search"
+            oninput="renderSearch(this.value)"
+          />
+        </div>
+       
+      </section>
+
+      <section class="image-gallery"></section>
+      <section class="saved-memes">
+        <div class="memes"></div>
+      </section>
+    </main>
+
+    
+
+    <footer>
+      <p>Created By Rotem A</p>
+    </footer>
+
+    <script src="js/util-service.js"></script>
+    <script src="js/storage-service.js"></script>
+    <script src="js/meme-service.js"></script>
+    <script src="js/meme-controller.js"></script>
+  </body>
+</html>
