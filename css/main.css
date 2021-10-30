@@ -135,11 +135,6 @@ header h1 {
   top: 14px;
 }
 
-.line-controls {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-}
 .image-gallery {
   display: flex;
   flex-wrap: wrap;
@@ -242,10 +237,10 @@ footer {
 
 
 
-.line-controls {
+/* .line-controls {
   justify-content: space-around;
   margin-left: 20px;
-}
+} */
 
 .line-controls button {
   width: 40px;
@@ -262,6 +257,7 @@ footer {
 
 .icons-gallery {
   display: inline-flex;
+
 }
 
 .below-sec {
@@ -288,7 +284,7 @@ footer {
   font-weight: bold;
   /* font-size: large; */
   border: 2px solid black;
-  border-radius: 25%;
+  border-radius: 15%;
 }
 
 .btn-save {
@@ -297,6 +293,7 @@ footer {
   font-weight: bold;
   cursor: pointer;
   padding-inline-end: 46px;
+  border-radius: 50%;
 }
 
 .btn-share {
@@ -305,6 +302,7 @@ footer {
   font-weight: bold;
   cursor: pointer;
   padding-inline-end: 56px;
+  border-radius: 25%;
 }
 
 .middle-container {
@@ -377,8 +375,7 @@ footer {
   .btn-right-arrow {
     display: inline;
     position: absolute;
-    right: 57px !important;
-    top: 515px !important;
+    
   }
 
   .my-canvas {
@@ -389,12 +386,7 @@ footer {
     flex-direction: column;
   }
 
-  .line-controls {
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
-
+  
   .save-sec {
     margin-top: 15px;
   }

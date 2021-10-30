@@ -80,13 +80,23 @@ function createMeme(imgId) {
     lines: [
       {
         txt: 'I never eat Falafel',
-        size: 40,
+        size: 25,
         align: 'left',
         font: 'impact',
         stroke: 'black',
         color: 'white',
         x: 50,
         y: 50,
+      },
+      {
+        txt: 'And I Lke IT ',
+        size: 25,
+        align: 'left',
+        font: 'impact',
+        stroke: 'black',
+        color: 'white',
+        x: 50,
+        y: 250,
       },
       
     ],

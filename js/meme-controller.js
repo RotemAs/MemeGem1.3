@@ -351,9 +351,21 @@ function getEvPos(ev) {
 function downloadCanvas(elLink) {
   isClickedOff = true;
   renderCanvas()
-  const data = gCanvas.toDataURL();
+  // _inDownloadCanvas(elLink)
+  setTimeout(_inDownloadCanvas(elLink), 5000);
+  
+}
+
+
+function _inDownloadCanvas(elLink){
+  const data = gCanvas.toDataURL() 
   elLink.href = data;
   elLink.download = 'my-img.jpg';
+}
+
+function enptyFrame(){
+  isClickedOff = true;
+  renderCanvas()
 }
 
 //search logic

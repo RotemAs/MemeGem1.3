@@ -52,7 +52,10 @@
             <div class="below-sec">
               <button title="Replacing control text boxes" onclick="onSwitchLine()" >
                 <i class="fas fa-arrows-alt-v"></i>
-              </button>
+                </button>
+                <button onclick="enptyFrame()">[]
+                </button>
+
               <button onclick="onAddLine()">
                 <i class="fas fa-plus"></i>
               </button>
@@ -114,13 +117,13 @@
           <button onclick="onMoveDown(1)">Down</button> -->
 
           <div class="save-sec">
+            <div class="downloadConteiner"></div>
             <a
               href="#"
               class="download"
               onclick="downloadCanvas(this)"
-              download=""
-              >Download</a
-            >
+              download
+              >Download</a>
             <button class="btn-share" onclick="onShareCanvas()">Share</button>
             <button class="btn-save" onclick="onSave()">Save</button>
           </div>
