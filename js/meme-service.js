@@ -119,7 +119,7 @@ function createNewLine() {
   return line;
 }
 
-//stickers logic
+
 function createNewSticker(txt) {
   let sticker = {
     txt,
@@ -150,7 +150,7 @@ function getStickersLength() {
 function addSticker(sticker, memeId) {
   let meme = getMemeById(memeId);
   meme.lines.push(createNewSticker(sticker));
-  // meme.selectedLineIdx = meme.lines.length - 1;
+  
 }
 
 function getMemeById(memeId) {
@@ -158,8 +158,6 @@ function getMemeById(memeId) {
 }
 
 function updateText(inputText, memeId) {
-  //add a change insted of using gselected line used selectedLineIdx of the meme obj
-  //this change fix a bug
   let meme = getMemeById(memeId);
   if (!meme.lines.length) return;
   meme.lines[meme.selectedLineIdx].txt = inputText;
@@ -218,6 +216,7 @@ function setLineStrokeColor(memeId, color) {
 function setFont(font, memeId) {
   let meme = getMemeById(memeId);
   meme.lines[meme.selectedLineIdx].font = font;
+  renderCanvas()
 }
 
 function setSelectedImg(imgId, memeId) {
@@ -236,9 +235,6 @@ function saveMeme() {
   _saveMemesToStorage();
 }
 
-// function saveImgs() {
-//   _saveImgsToStorage();
-// }
 
 function updateDataUrl(dataUrl, memeId) {
   let meme = getMemeById(memeId);
@@ -253,13 +249,12 @@ function _saveImgsToStorage() {
   saveToStorage(IMGS_KEY, gImgs);
 }
 
-//drag logic
+
 
 function isLineClicked(pos, memeId) {
   let meme = getMemeById(memeId);
   if (!meme.lines.length) return;
-  // console.log(meme.selectedLineIdx);
-  var lineX = meme.lines[meme.selectedLineIdx].x;
+   var lineX = meme.lines[meme.selectedLineIdx].x;
   var lineY = meme.lines[meme.selectedLineIdx].y;
   var lineWidth = meme.lines[meme.selectedLineIdx].lineWidth;
   var lineHeight = meme.lines[meme.selectedLineIdx].lineHeight;
@@ -269,7 +264,7 @@ function isLineClicked(pos, memeId) {
     lineY >= pos.y &&
     lineY - lineHeight <= pos.y
   );
-  //fontBoundingBoxAscent clac height
+  
 }
 
 function moveLine(dx, dy, memeId) {
@@ -300,10 +295,10 @@ function whichLineClicked(pos, memeId) {
   return lineIdx;
 }
 
-//search logic
+
 function getSortBySearchImgs(searchWord) {
   let lowerCaseWord = searchWord.toLowerCase();
-  //implemnt map object to increment when a word search
+  
   if (gKeyWordsMap[lowerCaseWord] !== undefined) {
     gKeyWordsMap[lowerCaseWord]++;
   }

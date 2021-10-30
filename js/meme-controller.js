@@ -48,7 +48,7 @@ function renderMemes() {
   elMemes.innerHTML = strHtmls.join('');
 }
 
-//render stickers
+
 function renderStickers(idx) {
   var stickers = getStickers(idx);
   if (!stickers.length) {
@@ -174,7 +174,7 @@ function onBackToGallery() {
   toggleGallery(true);
   toggleEditor(false);
   toggleMemes(false);
-  // toggleAbout(true);
+  
   toggleSearch(true);
 }
 
@@ -183,14 +183,12 @@ function onBackToMemes() {
   toggleGallery(false);
   toggleEditor(false);
   toggleMemes(true);
-  // toggleAbout(false);
+  
   toggleSearch(false);
 }
 
 function onUpdateText(inputText) {
-  //fixed a bug when gselected is not the marked line
-  //used the obj selectedLineIdx insted , fixed
-  updateText(inputText, gCurrMeme.id);
+   updateText(inputText, gCurrMeme.id);
   renderCanvas();
 }
 
@@ -258,7 +256,7 @@ function onPickStrokeColor(color) {
   renderCanvas();
 }
 
-//fix later
+
 function onFont(font) {
   setFont(font, gCurrMeme.id);
   renderCanvas();
@@ -267,7 +265,7 @@ function onFont(font) {
 function onSave() {
   isClickedOff = true;
   renderCanvas();
-  //remove all black boxes before the save
+  
   setTimeout(function () {
     var dataUrl = gCanvas.toDataURL();
     updateDataUrl(dataUrl, gCurrMeme.id);
@@ -276,7 +274,7 @@ function onSave() {
   }, 500);
 }
 
-//drag logic
+
 function addMouseListeners() {
   gCanvas.addEventListener('mousemove', onMove);
   gCanvas.addEventListener('mousedown', onDown);
@@ -295,10 +293,7 @@ function onClick(ev) {
   const pos = getEvPos(ev);
   const lineIdx = whichLineClicked(pos, gCurrMeme.id);
   if (lineIdx < 0) {
-    // //flag to remove the black selected box when clicked aside on the canvas
-    // //user can do it before the save soo it will save clean with no box
-    // isClickedOff = true;
-    // renderCanvas();
+    
     return;
   }
   gSelectedLine = setSelectedLineIdx(lineIdx, gCurrMeme.id);
@@ -351,8 +346,7 @@ function getEvPos(ev) {
 function downloadCanvas(elLink) {
   isClickedOff = true;
   renderCanvas()
-  // _inDownloadCanvas(elLink)
-  setTimeout(_inDownloadCanvas(elLink), 5000);
+    setTimeout(_inDownloadCanvas(elLink), 5000);
   
 }
 
@@ -368,7 +362,7 @@ function enptyFrame(){
   renderCanvas()
 }
 
-//search logic
+
 function renderSearch(inputText) {
   renderGallery(inputText);
 }
@@ -382,7 +376,7 @@ function onWordClicked(elWord) {
   elWord.style.fontSize = size + keyWordsMap[wordText] + 'px';
 }
 
-//stickers logic
+
 function onSticker(sticker) {
   addSticker(sticker, gCurrMeme.id);
   renderCanvas();
@@ -397,7 +391,7 @@ function onNextStickerPage(diff) {
   renderStickers(gStickerPage);
 }
 
-//share with web api
+
 async function onShareCanvas() {
   const dataUrl = gCanvas.toDataURL();
   const blob = await (await fetch(dataUrl)).blob();
@@ -413,7 +407,7 @@ async function onShareCanvas() {
   navigator.share(shareData);
 }
 
-//import user file pic
+
 function onImgInput(ev) {
   loadImageFromInput(ev, onImgClick);
 }
